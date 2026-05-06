@@ -7,7 +7,10 @@ namespace TripleOffer.CodeBase
     public class RewardPopupController : MonoBehaviour
     {
         [Inject] private IEventBus _eventBus;
+        [Inject] private IWindowService _windowService;
 
+        private RewardPopupView _view;
+        
         private void OnEnable()
         {
             _eventBus.Subscribe<RewardGrantedEvent>(OnRewardGranted);
@@ -31,6 +34,8 @@ namespace TripleOffer.CodeBase
         private void ShowPopup(List<RewardData> rewards)
         {
             // тут будет реальный UI
+            _view = _windowService.Open<RewardPopupView>();
+            _view.Show(rewards);
             Debug.Log("Show reward popup");
         }
     }
