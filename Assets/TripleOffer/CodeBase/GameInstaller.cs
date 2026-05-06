@@ -8,6 +8,8 @@ namespace TripleOffer.CodeBase
         {
             // Core services
             Container.Bind<WalletService>().AsSingle();
+            
+            Container.Bind<IEventBus>().To<EventBus>().AsSingle();
 
             // Reward handlers (MULTI BIND)
             Container.Bind<IRewardHandler>().To<GemsRewardHandler>().AsSingle();
