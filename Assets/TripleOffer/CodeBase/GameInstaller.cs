@@ -21,6 +21,10 @@ namespace TripleOffer.CodeBase
                 .AsSingle()
                 .WithArguments(windowMap);
             
+            Container.Bind<IConfigService>()
+                .To<JsonConfigService>()
+                .AsSingle();
+            
             Container.Bind<WalletService>().AsSingle();
             
             Container.Bind<IEventBus>().To<EventBus>().AsSingle();

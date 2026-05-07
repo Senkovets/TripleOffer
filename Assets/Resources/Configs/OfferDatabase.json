@@ -1,0 +1,42 @@
+{
+  "Offers": [
+    {
+      "EventId": "triple_offer_01",
+      "Type": "TripleOffer",
+      "Title": "Starter Bundle",
+      "DurationHours": 48,
+
+      "Offers": [
+        {
+          "Id": "offer_01",
+          "Title": "Small Pack",
+          "Price": 4.99,
+
+          "Rewards": [
+            {
+              "$type": "GemsRewardData, Assembly-CSharp",
+              "Amount": 100
+            },
+            {
+              "$type": "PremiumRewardData, Assembly-CSharp",
+              "Days": 2
+            }
+          ]
+        },
+
+        {
+          "Id": "offer_02",
+          "Title": "Medium Pack",
+          "Price": 9.99,
+
+          "Rewards": [
+            {
+              "$type": "CoinsRewardData, Assembly-CSharp",
+              "Amount": 5000
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
