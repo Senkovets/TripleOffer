@@ -11,22 +11,28 @@ namespace TripleOffer.CodeBase
 
         public void Setup(RewardData reward)
         {
-            switch (reward.Type)
+            switch (reward)
             {
-                case RewardType.Gems:
-                    _title.text = $"+{reward.Amount} Gems";
+                case GemsRewardData gems:
+                    _title.text = $"+{gems.Amount} Gems";
                     break;
 
-                case RewardType.PremiumDays:
-                    _title.text = $"+{reward.Days} Days Premium";
+                case CoinsRewardData coins:
+                    _title.text = $"+{coins.Amount} Coins";
                     break;
 
-                case RewardType.Skin:
-                    _title.text = $"Skin: {reward.SkinId}";
+                case PremiumRewardData premium:
+                    _title.text = $"+{premium.Days} Days Premium";
+                    break;
+
+                case SkinRewardData skin:
+                    _title.text = $"Skin: {skin.SkinId}";
+                    break;
+
+                default:
+                    _title.text = "Unknown Reward";
                     break;
             }
-
-            // icon можно пока захардкодить или сделать позже через registry
         }
     }
 }

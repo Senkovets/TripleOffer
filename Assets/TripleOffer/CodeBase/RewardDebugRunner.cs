@@ -13,11 +13,22 @@ namespace TripleOffer.CodeBase
         {
             var rewards = new List<RewardData>
             {
-                new RewardData { Type = RewardType.Gems, Amount = 100 },
-                new RewardData { Type = RewardType.PremiumDays, Days = 2 },
-                new RewardData { Type = RewardType.Skin, SkinId = "hero_1" }
+                new GemsRewardData
+                {
+                    Amount = 100
+                },
+
+                new PremiumRewardData
+                {
+                    Days = 2
+                },
+
+                new SkinRewardData
+                {
+                    SkinId = "hero_1"
+                }
             };
-            
+
             var testOffer = new OfferItemConfig
             {
                 Id = "starter_pack_01",
@@ -26,7 +37,6 @@ namespace TripleOffer.CodeBase
             };
 
             Purchase(testOffer);
-            
         }
         
         public void Purchase(OfferItemConfig item)

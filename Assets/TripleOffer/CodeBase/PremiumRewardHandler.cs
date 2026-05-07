@@ -2,13 +2,11 @@ using UnityEngine;
 
 namespace TripleOffer.CodeBase
 {
-    public class PremiumRewardHandler : IRewardHandler
+    public class PremiumRewardHandler : RewardHandler<PremiumRewardData>
     {
-        public RewardType SupportedType => RewardType.PremiumDays;
-
-        public void Grant(RewardData reward)
+        protected override void GrantTyped(PremiumRewardData reward)
         {
-            Debug.Log($"Premium +{reward.Days} days");
+            UnityEngine.Debug.Log($"Premium for {reward.Days} days");
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,24 +7,26 @@ namespace TripleOffer.CodeBase
 {
     public class GameRewardGranter
     {
-        private readonly Dictionary<RewardType, IRewardHandler> _handlers;
+        private readonly Dictionary<Type, IRewardHandler> _handlers;
 
-        public GameRewardGranter(IEnumerable<IRewardHandler> handlers)
+        public GameRewardGranter(List<IRewardHandler> handlers)
         {
-            _handlers = handlers.ToDictionary(h => h.SupportedType);
+            _handlers = handlers.ToDictionary(x => x.RewardType);
         }
 
-        public void Grant(IEnumerable<RewardData> rewards)
+        public void Grant(List<RewardData> rewards)
         {
             foreach (var reward in rewards)
             {
-                if (_handlers.TryGetValue(reward.Type, out var handler))
+                var type = reward.GetType();
+
+                if (_handlers.TryGetValue(type, out var handler))
                 {
                     handler.Grant(reward);
                 }
                 else
                 {
-                    Debug.LogWarning($"No handler for reward type: {reward.Type}");
+                    Debug.LogError($"No handler for {type}");
                 }
             }
         }

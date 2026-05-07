@@ -25,7 +25,20 @@ namespace TripleOffer.CodeBase
         {
             foreach (var reward in evt.Rewards)
             {
-                Debug.Log($"UI: received reward {reward.Type}");
+                switch (reward)
+                {
+                    case GemsRewardData gems:
+                        Debug.Log($"UI: received {gems.Amount} gems");
+                        break;
+
+                    case PremiumRewardData premium:
+                        Debug.Log($"UI: received premium {premium.Days} days");
+                        break;
+
+                    case SkinRewardData skin:
+                        Debug.Log($"UI: received skin {skin.SkinId}");
+                        break;
+                }
             }
 
             ShowPopup(evt.Rewards);

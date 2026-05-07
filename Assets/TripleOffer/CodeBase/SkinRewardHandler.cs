@@ -2,13 +2,11 @@ using UnityEngine;
 
 namespace TripleOffer.CodeBase
 {
-    public class SkinRewardHandler : IRewardHandler
+    public class SkinRewardHandler : RewardHandler<SkinRewardData>
     {
-        public RewardType SupportedType => RewardType.Skin;
-
-        public void Grant(RewardData reward)
+        protected override void GrantTyped(SkinRewardData reward)
         {
-            Debug.Log($"Unlocked skin: {reward.SkinId}");
+            UnityEngine.Debug.Log($"Unlocked skin {reward.SkinId}");
         }
     }
 }

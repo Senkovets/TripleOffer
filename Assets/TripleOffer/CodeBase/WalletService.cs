@@ -2,12 +2,20 @@ namespace TripleOffer.CodeBase
 {
     public class WalletService
     {
-        private int _gems;
+        public int Gems { get; private set; }
+        public int Coins { get; private set; }
 
         public void AddGems(int amount)
         {
-            _gems += amount;
-            UnityEngine.Debug.Log($"Gems +{amount}, total: {_gems}");
+            Gems += amount;
+            UnityEngine.Debug.Log($"Gems +{amount}, total: {Gems}");
+        }
+
+        public void AddCoins(int amount)
+        {
+            Coins += amount;
+            UnityEngine.Debug.Log($"Gems +{amount}, total: {Coins}");
         }
     }
+  
 }

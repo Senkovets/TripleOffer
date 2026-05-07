@@ -3,8 +3,8 @@ using Newtonsoft.Json;
 namespace TripleOffer.CodeBase
 {
     [JsonObject]
-    public abstract  class RewardData
+    public class GemsRewardData : RewardData
     {
-     
+        public int Amount;
     }
 }
