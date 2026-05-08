@@ -3,11 +3,18 @@
     public class OfferFactory : IOfferFactory
     {
         private readonly GameRewardGranter _rewardGranter;
+        private readonly ISaveLoadService _saveLoadService;
+        private readonly IClock _clock;
 
         public OfferFactory(
-            GameRewardGranter rewardGranter)
+            GameRewardGranter rewardGranter,
+            ISaveLoadService saveLoadService,
+            IClock clock)
         {
             _rewardGranter = rewardGranter;
+            _saveLoadService = saveLoadService;
+            _clock = clock;
+            
         }
 
         public IOffer Create(OfferConfig config)
@@ -17,7 +24,9 @@
                 case "TripleOffer":
                     return new TripleOffer(
                         config,
-                        _rewardGranter
+                        _rewardGranter,
+                        _saveLoadService,
+                        _clock
                     );
 
                 default:

@@ -6,12 +6,18 @@
       "Title": "Starter Bundle",
       "DurationHours": 48,
 
+      "CompletionRewards": [
+        {
+          "$type": "GemsRewardData, Assembly-CSharp",
+          "Amount": 1000
+        }
+      ],
+
       "Offers": [
         {
           "Id": "offer_01",
           "Title": "Small Pack",
           "Price": 4.99,
-
           "Rewards": [
             {
               "$type": "GemsRewardData, Assembly-CSharp",
@@ -23,12 +29,10 @@
             }
           ]
         },
-
         {
           "Id": "offer_02",
           "Title": "Medium Pack",
           "Price": 9.99,
-
           "Rewards": [
             {
               "$type": "CoinsRewardData, Assembly-CSharp",

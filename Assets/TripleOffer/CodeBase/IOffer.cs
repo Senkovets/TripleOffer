@@ -12,9 +12,13 @@ namespace TripleOffer.CodeBase
 
         bool IsAvailable { get; }
 
+        bool IsCompleted { get; }
+
         List<OfferItemConfig> Items { get; }
 
         void Initialize();
+
+        void Save();
 
         PurchaseResult Purchase(string itemId);
     }

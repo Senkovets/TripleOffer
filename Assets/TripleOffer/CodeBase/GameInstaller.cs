@@ -32,6 +32,14 @@ namespace TripleOffer.CodeBase
             Container.Bind<IOfferService>()
                 .To<OfferService>()
                 .AsSingle();
+            
+            Container.Bind<IClock>()
+                .To<SystemClock>()
+                .AsSingle();
+
+            Container.Bind<ISaveLoadService>()
+                .To<FileSaveLoadService>()
+                .AsSingle();
 
             Container.Bind<WalletService>().AsSingle();
             

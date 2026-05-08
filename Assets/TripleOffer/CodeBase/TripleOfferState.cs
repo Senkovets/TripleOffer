@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TripleOffer.CodeBase
 {
@@ -6,5 +7,14 @@ namespace TripleOffer.CodeBase
     {
         public HashSet<string> PurchasedItems =
             new HashSet<string>();
+        
+        //либо   public List<string> PurchasedItems = new();?
+        public bool CompletionRewardClaimed;
+
+        public bool Completed;
+
+        public DateTime StartTime;
+
+        public DateTime ExpirationTime;
     }
 }

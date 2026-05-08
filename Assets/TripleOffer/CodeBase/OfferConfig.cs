@@ -13,5 +13,6 @@ namespace TripleOffer.CodeBase
         public int DurationHours;
 
         public List<OfferItemConfig> Offers;
+        public List<RewardData> CompletionRewards;
     }
 }
