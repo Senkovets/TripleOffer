@@ -16,3 +16,4 @@ namespace TripleOffer.CodeBase
         public List<RewardData> CompletionRewards;
     }
 }
+

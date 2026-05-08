@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9bb0f3489c45088818b050afcbb73b, type: 3}
+  m_Name: OfferUiRegistry
+  m_EditorClassIdentifier: 
+  Entries:
+  - EventId: triple_offer_01
+    ButtonPrefab: {fileID: 5757846880769994519, guid: 4f2d4e78c6badfc43ba7fab3845e8a55, type: 3}
+    WindowPrefab: {fileID: 1007399828708280811, guid: a2eddb527ac1a61498c87779302005b6, type: 3}
+    ItemPrefab: {fileID: 2497965814166669172, guid: 586dac7f8bf991847b22cddb61e218e5, type: 3}
