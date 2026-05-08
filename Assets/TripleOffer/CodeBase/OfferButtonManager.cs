@@ -36,7 +36,28 @@ namespace TripleOffer.CodeBase
         private void CreateButton(IOffer offer)
         {
             OfferUiEntry uiEntry =
-                _uiRegistry.Get(offer.Type);
+                _uiRegistry.Get(offer.EventId);
+            
+            // Если в реестре нет настроек для этого типа оффера
+            if (uiEntry == null)
+            {
+                Debug.LogError($"[OfferButtonManager] No UI Entry found for offer type: {offer.Type}");
+                return;
+            }
+
+            // Если ты забыл назначить префаб в самом реестре
+            if (uiEntry.ButtonPrefab == null)
+            {
+                Debug.LogError($"[OfferButtonManager] ButtonPrefab is missing in UI Entry for: {offer.Type}");
+                return;
+            }
+
+            // Если забыл назначить контейнер в инспекторе
+            if (_container == null || _container.Container == null)
+            {
+                Debug.LogError("[OfferButtonManager] Container or Container.Transform is null! Check Inspector.");
+                return;
+            }
 
             OfferButtonView button =
                 Instantiate(
@@ -52,7 +73,7 @@ namespace TripleOffer.CodeBase
         private void OpenOffer(IOffer offer)
         {
             OfferUiEntry uiEntry =
-                _uiRegistry.Get(offer.Type);
+                _uiRegistry.Get(offer.EventId);
 
             OfferWindowView window =
                 Instantiate(uiEntry.WindowPrefab);

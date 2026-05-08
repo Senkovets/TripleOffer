@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace TripleOffer.CodeBase
 {
@@ -20,10 +21,25 @@ namespace TripleOffer.CodeBase
             {
                 offer.Initialize();
             }
+            
+            
+            foreach (var offer in _offers)
+            {
+                Debug.Log(
+                    $"{offer.EventId} available: {offer.IsAvailable}"
+                );
+            }
         }
 
         public List<IOffer> GetAvailableOffers()
         {
+            foreach (var offer in _offers)
+            {
+                Debug.Log(
+                    $"{offer.EventId} available: {offer.IsAvailable}"
+                );
+            }
+            
             return _offers
                 .Where(x => x.IsAvailable)
                 .ToList();
