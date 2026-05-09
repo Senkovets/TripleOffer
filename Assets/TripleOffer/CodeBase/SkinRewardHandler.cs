@@ -4,9 +4,9 @@ namespace TripleOffer.CodeBase
 {
     public class SkinRewardHandler : RewardHandler<SkinRewardData>
     {
-        protected override void GrantTyped(SkinRewardData reward)
-        {
-            UnityEngine.Debug.Log($"Unlocked skin {reward.SkinId}");
-        }
+        private readonly ProfileService _profile;
+        public SkinRewardHandler(ProfileService profile) => _profile = profile;
+
+        protected override void GrantTyped(SkinRewardData reward) => _profile.AddSkin(reward.SkinId);
     }
 }

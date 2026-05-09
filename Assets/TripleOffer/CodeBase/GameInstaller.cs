@@ -51,6 +51,8 @@ namespace TripleOffer.CodeBase
 
             // Granter
             Container.Bind<GameRewardGranter>().AsSingle();
+            
+            Container.Bind<ProfileService>().AsSingle();
         }
     }
 }

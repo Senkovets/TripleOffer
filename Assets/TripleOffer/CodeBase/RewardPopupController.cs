@@ -48,7 +48,7 @@ namespace TripleOffer.CodeBase
         {
             // тут будет реальный UI
            // _view = _windowService.Open<RewardPopupView>();
-            _view.Show(rewards);
+           // _view.Show(rewards);
             Debug.Log("Show reward popup");
         }
     }

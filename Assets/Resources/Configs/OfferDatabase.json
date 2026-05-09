@@ -4,7 +4,7 @@
       "EventId": "triple_offer_01",
       "Type": "TripleOffer",
       "Title": "Starter Bundle",
-      "DurationHours": 999,
+      "DurationHours": 48,
 
       "CompletionRewards": [
         {
@@ -44,6 +44,63 @@
             {
               "$type": "CoinsRewardData, Assembly-CSharp",
               "Amount": 5000
+            },
+            {
+              "$type": "SkinRewardData, Assembly-CSharp",
+              "SkinId": "RareHelm"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "EventId": "triple_offer_02",
+      "Type": "TripleOffer",
+      "Title": "Pro Bundle",
+      "DurationHours": 96,
+
+      "CompletionRewards": [
+        {
+          "$type": "GemsRewardData, Assembly-CSharp",
+          "Amount": 5000
+        }
+      ],
+
+      "Items": [
+        {
+          "Id": "offer_01",
+          "ItemViewId": "small_offer_item",
+
+          "Title": "Small Pack",
+          "Price": 4.99,
+
+          "Rewards": [
+            {
+              "$type": "GemsRewardData, Assembly-CSharp",
+              "Amount": 100
+            },
+            {
+              "$type": "PremiumRewardData, Assembly-CSharp",
+              "Days": 2
+            }
+          ]
+        },
+
+        {
+          "Id": "offer_02",
+          "ItemViewId": "medium_offer_item",
+
+          "Title": "Medium Pack",
+          "Price": 9.99,
+
+          "Rewards": [
+            {
+              "$type": "CoinsRewardData, Assembly-CSharp",
+              "Amount": 5000
+            },
+            {
+              "$type": "SkinRewardData, Assembly-CSharp",
+              "SkinId": "RareHelm"
             }
           ]
         }

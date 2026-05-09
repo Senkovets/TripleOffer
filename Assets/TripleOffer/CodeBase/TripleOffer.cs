@@ -67,8 +67,7 @@ namespace TripleOffer.CodeBase
         
         public bool IsPurchased(string itemId)
         {
-            return _state.PurchasedItems
-                .Contains(itemId);
+            return _state.PurchasedItems.Contains(itemId);
         }
 
         public PurchaseResult Purchase(string itemId)
@@ -80,8 +79,7 @@ namespace TripleOffer.CodeBase
                 );
             }
 
-            OfferItemConfig item =
-                _config.Items.FirstOrDefault(x => x.Id == itemId);
+            OfferItemConfig item = _config.Items.FirstOrDefault(x => x.Id == itemId);
 
             if (item == null)
             {
@@ -91,13 +89,11 @@ namespace TripleOffer.CodeBase
             }
 
             _rewardGranter.Grant(item.Rewards);
+            _eventBus.Publish(new RewardGrantedEvent(item.Rewards));
 
             _state.PurchasedItems.Add(itemId);
-
             CheckCompletion();
-
             Save();
-
             return PurchaseResult.Success();
         }
         
