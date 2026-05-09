@@ -27,6 +27,20 @@ namespace TripleOffer.CodeBase
         
         public bool IsCompleted =>
             _state.Completed;
+        
+        public string RemainingTimeStr 
+        {
+            get 
+            {
+                var time = _state.ExpirationTime - _clock.UtcNow;
+                if (time <= System.TimeSpan.Zero) return "00:00:00";
+
+                if (time.TotalDays >= 1)
+                    return $"{(int)time.TotalDays}d {time.Hours:D2}:{time.Minutes:D2}:{time.Seconds:D2}";
+            
+                return $"{time.Hours:D2}:{time.Minutes:D2}:{time.Seconds:D2}";
+            }
+        }
 
         public List<OfferItemConfig> Items => _config.Items;
 

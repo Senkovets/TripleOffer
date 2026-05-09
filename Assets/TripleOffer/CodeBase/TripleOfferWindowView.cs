@@ -1,3 +1,5 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -6,17 +8,12 @@ namespace TripleOffer.CodeBase
 {
     public class TripleOfferWindowView : OfferWindowView
     {
-        [SerializeField]
-        private Transform _itemsContainer;
+        [SerializeField] private Transform _itemsContainer;
+        [SerializeField] private Button _closeButton;
+        [SerializeField] private TMP_Text _timerText; // Поле для таймера в окне
 
-        [SerializeField]
-        private Button _closeButton;
-
-        [Inject]
-        private IWindowService _windowService;
-
-        [Inject]
-        private OfferUiRegistry _uiRegistry;
+        [Inject] private IWindowService _windowService;
+        [Inject] private OfferUiRegistry _uiRegistry;
 
         private IOffer _offer;
 
@@ -26,8 +23,23 @@ namespace TripleOffer.CodeBase
             _offer = offer;
 
             BuildItems();
-
+        
+            _closeButton.onClick.RemoveAllListeners();
             _closeButton.onClick.AddListener(Close);
+
+            StopAllCoroutines();
+            StartCoroutine(UpdateTimerRoutine());
+        }
+
+        private IEnumerator UpdateTimerRoutine()
+        {
+            while (_offer != null)
+            {
+                if (_timerText != null)
+                    _timerText.text = _offer.RemainingTimeStr;
+            
+                yield return new WaitForSeconds(1f);
+            }
         }
 
         private void BuildItems()

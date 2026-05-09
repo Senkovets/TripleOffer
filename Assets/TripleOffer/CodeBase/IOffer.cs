@@ -23,5 +23,7 @@ namespace TripleOffer.CodeBase
         bool IsPurchased(string itemId);
 
         PurchaseResult Purchase(string itemId);
+        
+        string RemainingTimeStr { get; }
     }
 }
