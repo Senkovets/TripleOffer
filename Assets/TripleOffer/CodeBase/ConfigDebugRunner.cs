@@ -16,7 +16,7 @@ namespace TripleOffer.CodeBase
             {
                 Debug.Log($"[ConfigDebugRunner] Loaded offer: {offer.Title}");
 
-                foreach (var item in offer.Offers)
+                foreach (var item in offer.Items)
                 {
                     Debug.Log($"[ConfigDebugRunner] Item: {item.Title}");
 

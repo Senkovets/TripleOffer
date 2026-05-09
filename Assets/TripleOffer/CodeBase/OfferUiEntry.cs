@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TripleOffer.CodeBase
 {
@@ -11,6 +13,15 @@ namespace TripleOffer.CodeBase
 
         public OfferWindowView WindowPrefab;
 
-        public OfferItemView ItemPrefab;
+        public List<ItemPrefabEntry> ItemPrefabs;
+        
+        public OfferItemView GetItemPrefab(
+            string itemViewId)
+        {
+            return ItemPrefabs
+                .FirstOrDefault(
+                    x => x.ItemViewId == itemViewId)
+                ?.Prefab;
+        }
     }
 }

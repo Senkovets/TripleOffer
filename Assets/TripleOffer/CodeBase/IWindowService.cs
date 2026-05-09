@@ -4,7 +4,7 @@ namespace TripleOffer.CodeBase
 {
     public interface IWindowService
     {
-        T Open<T>() where T : MonoBehaviour;
-        void Close<T>() where T : MonoBehaviour;
+        void Open(IOffer offer);
+        void Close(OfferWindowView window);
     }
 }

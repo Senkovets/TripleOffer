@@ -7,19 +7,14 @@ namespace TripleOffer.CodeBase
 {
     public class GameInstaller : MonoInstaller
     {
-        [SerializeField] private List<MonoBehaviour> _windowPrefabs;
-        
+        [SerializeField] private OfferUiRegistry _uiRegistry;
         public override void InstallBindings()
         {
-            // Core services
-            var windowMap = _windowPrefabs.ToDictionary(k => k.GetType(), v => v);
-
-            // 2. Core services
-            // Передаем созданный словарь специально для WindowService
+            Container.Bind<OfferUiRegistry>().FromInstance(_uiRegistry).AsSingle();
+            
             Container.Bind<IWindowService>()
                 .To<WindowService>()
-                .AsSingle()
-                .WithArguments(windowMap);
+                .AsSingle();
 
             Container.Bind<IConfigService>()
                 .To<JsonConfigService>()
@@ -40,6 +35,7 @@ namespace TripleOffer.CodeBase
             Container.Bind<ISaveLoadService>()
                 .To<FileSaveLoadService>()
                 .AsSingle();
+            
 
             Container.Bind<WalletService>().AsSingle();
             

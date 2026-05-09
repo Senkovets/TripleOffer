@@ -47,7 +47,7 @@ namespace TripleOffer.CodeBase
         private void ShowPopup(List<RewardData> rewards)
         {
             // тут будет реальный UI
-            _view = _windowService.Open<RewardPopupView>();
+           // _view = _windowService.Open<RewardPopupView>();
             _view.Show(rewards);
             Debug.Log("Show reward popup");
         }

@@ -25,7 +25,7 @@ namespace TripleOffer.CodeBase
         public bool IsCompleted =>
             _state.Completed;
 
-        public List<OfferItemConfig> Items => _config.Offers;
+        public List<OfferItemConfig> Items => _config.Items;
 
         public TripleOffer(
             OfferConfig config,
@@ -56,7 +56,7 @@ namespace TripleOffer.CodeBase
             }
 
             OfferItemConfig item =
-                _config.Offers.FirstOrDefault(x => x.Id == itemId);
+                _config.Items.FirstOrDefault(x => x.Id == itemId);
 
             if (item == null)
             {
@@ -111,7 +111,7 @@ namespace TripleOffer.CodeBase
         private void CheckCompletion()
         {
             bool allPurchased =
-                _config.Offers.All(
+                _config.Items.All(
                     x => _state.PurchasedItems.Contains(x.Id)
                 );
 

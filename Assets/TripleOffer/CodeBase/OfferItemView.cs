@@ -8,19 +8,29 @@ namespace TripleOffer.CodeBase
     {
         [SerializeField] private TMP_Text _title;
         [SerializeField] private TMP_Text _price;
-        [SerializeField] private Button _buy;
+        [SerializeField] private Button _buyButton;
 
-        private string _id;
+        private OfferItemConfig _config;
+        private IOffer _offer;
 
-        public void Setup(OfferItemConfig data, System.Action<string> onBuy)
+        public void Setup(
+            OfferItemConfig config,
+            IOffer offer)
         {
-            _id = data.Id;
+            _config = config;
+            _offer = offer;
 
-            _title.text = data.Id; // пока так
-            _price.text = data.Price.ToString();
+            Debug.Log("AddListener");
+            _buyButton.onClick.AddListener(Buy);
+        }
 
-            _buy.onClick.RemoveAllListeners();
-            _buy.onClick.AddListener(() => onBuy?.Invoke(_id));
+        private void Buy()
+        {
+            Debug.Log("Buy");
+            PurchaseResult result =
+                _offer.Purchase(_config.Id);
+
+            Debug.Log(result.Type);
         }
     }
 }

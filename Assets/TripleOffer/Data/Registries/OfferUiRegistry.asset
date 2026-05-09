@@ -16,4 +16,8 @@ MonoBehaviour:
   - EventId: triple_offer_01
     ButtonPrefab: {fileID: 5757846880769994519, guid: 4f2d4e78c6badfc43ba7fab3845e8a55, type: 3}
     WindowPrefab: {fileID: 4107114316437579964, guid: 758f3ac1fcad8204591aabcc67efcc43, type: 3}
-    ItemPrefab: {fileID: 2497965814166669172, guid: 586dac7f8bf991847b22cddb61e218e5, type: 3}
+    ItemPrefabs:
+    - ItemViewId: small_offer_item
+      Prefab: {fileID: 0}
+    - ItemViewId: medium_offer_item
+      Prefab: {fileID: 0}

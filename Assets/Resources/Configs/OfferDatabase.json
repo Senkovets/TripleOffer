@@ -13,11 +13,14 @@
         }
       ],
 
-      "Offers": [
+      "Items": [
         {
           "Id": "offer_01",
+          "ItemViewId": "small_offer_item",
+
           "Title": "Small Pack",
           "Price": 4.99,
+
           "Rewards": [
             {
               "$type": "GemsRewardData, Assembly-CSharp",
@@ -29,10 +32,14 @@
             }
           ]
         },
+
         {
           "Id": "offer_02",
+          "ItemViewId": "medium_offer_item",
+
           "Title": "Medium Pack",
           "Price": 9.99,
+
           "Rewards": [
             {
               "$type": "CoinsRewardData, Assembly-CSharp",

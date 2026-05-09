@@ -1,29 +1,33 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
+using Zenject; 
 
 namespace TripleOffer.CodeBase
 {
     public class WindowService : IWindowService
     {
-        private readonly Dictionary<Type, MonoBehaviour> _windows;
+        private readonly OfferUiRegistry _registry;
+        private readonly DiContainer _container; 
 
-        public WindowService(Dictionary<Type, MonoBehaviour> windows)
+        public WindowService(OfferUiRegistry registry, DiContainer container) 
         {
-            _windows = windows;
+            _registry = registry;
+            _container = container;
         }
 
-        public T Open<T>() where T : MonoBehaviour
+        public void Open(IOffer offer)
         {
-            var window = (T)_windows[typeof(T)];
-            window.gameObject.SetActive(true);
-            return window;
+            OfferUiEntry entry = _registry.Get(offer.EventId);
+            
+            // Используем Zenject вместо обычного Instantiate
+            OfferWindowView window = _container
+                .InstantiatePrefabForComponent<OfferWindowView>(entry.WindowPrefab);
+            
+            window.Setup(offer);
         }
 
-        public void Close<T>() where T : MonoBehaviour
+        public void Close(OfferWindowView window)
         {
-            var window = _windows[typeof(T)];
-            window.gameObject.SetActive(false);
+            Object.Destroy(window.gameObject);
         }
     }
 }

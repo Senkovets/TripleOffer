@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -24,8 +25,7 @@ namespace TripleOffer.CodeBase
 
         public void Build()
         {
-            var offers =
-                _offerService.GetAvailableOffers();
+            var offers = _offerService.GetAvailableOffers();
 
             foreach (var offer in offers)
             {
@@ -72,13 +72,22 @@ namespace TripleOffer.CodeBase
 
         private void OpenOffer(IOffer offer)
         {
-            OfferUiEntry uiEntry =
+            _windowService.Open(offer);
+            
+            /*OfferUiEntry uiEntry =
                 _uiRegistry.Get(offer.EventId);
 
             OfferWindowView window =
                 Instantiate(uiEntry.WindowPrefab);
+            
+            List<OfferItemConfig> Items = offer.Items;
+            
+            foreach (var aitem in Items)
+            {
+                Instantiate(uiEntry.ItemPrefab, window.transform);
+            }
 
-            window.Setup(offer);
+            window.Setup(offer);*/
         }
     }
 }

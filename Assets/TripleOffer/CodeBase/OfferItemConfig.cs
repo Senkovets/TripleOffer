@@ -5,6 +5,8 @@ namespace TripleOffer.CodeBase
     public class OfferItemConfig
     {
         public string Id;
+        
+        public string ItemViewId;
 
         public string Title;
 
