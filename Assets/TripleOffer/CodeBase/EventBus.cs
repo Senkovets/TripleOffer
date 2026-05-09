@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq; 
 
 namespace TripleOffer.CodeBase
 {
@@ -14,7 +15,14 @@ namespace TripleOffer.CodeBase
             if (!_subscribers.TryGetValue(type, out var handlers))
                 return;
 
-            foreach (var handler in handlers)
+            // КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ:
+            // Создаем копию списка подписчиков перед итерацией.
+            // Теперь, если кто-то отпишется внутри цикла (вызовет Unsubscribe),
+            // он удалится из оригинального списка в Dictionary, 
+            // но текущий цикл foreach спокойно дойдет до конца по этой локальной копии.
+            var handlersCopy = handlers.ToList();
+
+            foreach (var handler in handlersCopy)
             {
                 ((Action<T>)handler)?.Invoke(evt);
             }

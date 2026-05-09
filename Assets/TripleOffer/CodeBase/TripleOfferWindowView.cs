@@ -14,9 +14,22 @@ namespace TripleOffer.CodeBase
 
         [Inject] private IWindowService _windowService;
         [Inject] private OfferUiRegistry _uiRegistry;
+        [Inject] private IEventBus _eventBus;
 
         private IOffer _offer;
 
+        private void OnEnable()
+        {
+            _eventBus.Subscribe<OfferCompletedEvent>(
+                OnOfferCompleted);
+        }
+
+        private void OnDisable()
+        {
+            _eventBus.Unsubscribe<OfferCompletedEvent>(
+                OnOfferCompleted);
+        }
+        
         public override void Setup(IOffer offer)
         {
             base.Setup(offer);
@@ -91,6 +104,11 @@ namespace TripleOffer.CodeBase
         private void Close()
         {
             _windowService.Close(this);
+        }
+        
+        private void OnOfferCompleted(OfferCompletedEvent evt)
+        {
+            Close();
         }
     }
 }

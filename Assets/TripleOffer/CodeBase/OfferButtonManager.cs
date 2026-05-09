@@ -104,8 +104,7 @@ namespace TripleOffer.CodeBase
             window.Setup(offer);*/
         }
         
-        private void OnOfferCompleted(
-            OfferCompletedEvent evt)
+        private void OnOfferCompleted(OfferCompletedEvent evt)
         {
             Rebuild();
         }
@@ -113,14 +112,12 @@ namespace TripleOffer.CodeBase
         private void Rebuild()
         {
             Clear();
-
             Build();
         }
 
         private void Clear()
         {
-            foreach (Transform child
-                     in _container.Container)
+            foreach (Transform child in _container.Container)
             {
                 Destroy(child.gameObject);
             }
