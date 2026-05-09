@@ -19,6 +19,8 @@ namespace TripleOffer.CodeBase
         void Initialize();
 
         void Save();
+        
+        bool IsPurchased(string itemId);
 
         PurchaseResult Purchase(string itemId);
     }

@@ -5,15 +5,18 @@
         private readonly GameRewardGranter _rewardGranter;
         private readonly ISaveLoadService _saveLoadService;
         private readonly IClock _clock;
+        private readonly IEventBus _eventBus;
 
         public OfferFactory(
             GameRewardGranter rewardGranter,
             ISaveLoadService saveLoadService,
-            IClock clock)
+            IClock clock,
+            IEventBus eventBus)
         {
             _rewardGranter = rewardGranter;
             _saveLoadService = saveLoadService;
             _clock = clock;
+            _eventBus = eventBus;
             
         }
 
@@ -26,7 +29,8 @@
                         config,
                         _rewardGranter,
                         _saveLoadService,
-                        _clock
+                        _clock,
+                        _eventBus
                     );
 
                 default:

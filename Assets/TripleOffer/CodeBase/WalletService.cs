@@ -14,7 +14,7 @@ namespace TripleOffer.CodeBase
         public void AddCoins(int amount)
         {
             Coins += amount;
-            UnityEngine.Debug.Log($"Gems +{amount}, total: {Coins}");
+            UnityEngine.Debug.Log($"Coins +{amount}, total: {Coins}");
         }
     }
   

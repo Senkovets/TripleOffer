@@ -1,3 +1,5 @@
+using Zenject;
+
 namespace TripleOffer.CodeBase
 {
     using System.Collections.Generic;
@@ -9,7 +11,8 @@ namespace TripleOffer.CodeBase
         private readonly GameRewardGranter _rewardGranter;
         private readonly ISaveLoadService _saveLoadService;
         private readonly IClock _clock;
-
+        private readonly IEventBus _eventBus;
+        
         private TripleOfferState _state; 
 
         public string EventId => _config.EventId;
@@ -31,12 +34,14 @@ namespace TripleOffer.CodeBase
             OfferConfig config,
             GameRewardGranter rewardGranter,
             ISaveLoadService saveLoadService,
-            IClock clock)
+            IClock clock,
+            IEventBus eventBus)
         {
             _config = config;
             _rewardGranter = rewardGranter;
             _saveLoadService = saveLoadService;
             _clock = clock;
+            _eventBus = eventBus;
 
             _state = new TripleOfferState();
         }
@@ -44,6 +49,12 @@ namespace TripleOffer.CodeBase
         public void Initialize()
         {
             LoadOrCreateState();
+        }
+        
+        public bool IsPurchased(string itemId)
+        {
+            return _state.PurchasedItems
+                .Contains(itemId);
         }
 
         public PurchaseResult Purchase(string itemId)
@@ -121,6 +132,8 @@ namespace TripleOffer.CodeBase
             }
 
             _state.Completed = true;
+            
+            _eventBus.Publish(new OfferCompletedEvent(EventId));
 
             GrantCompletionReward();
         }

@@ -6,6 +6,8 @@ namespace TripleOffer.CodeBase
 {
     public class OfferButtonManager: MonoBehaviour, IOfferButtonManager
     {
+        [Inject] private IEventBus _eventBus;
+        
         [SerializeField]
         private OfferButtonContainer _container;
 
@@ -21,6 +23,18 @@ namespace TripleOffer.CodeBase
         public void Start()
         {
             Build();
+        }
+        
+        private void OnEnable()
+        {
+            _eventBus.Subscribe<OfferCompletedEvent>(
+                OnOfferCompleted);
+        }
+
+        private void OnDisable()
+        {
+            _eventBus.Unsubscribe<OfferCompletedEvent>(
+                OnOfferCompleted);
         }
 
         public void Build()
@@ -88,6 +102,28 @@ namespace TripleOffer.CodeBase
             }
 
             window.Setup(offer);*/
+        }
+        
+        private void OnOfferCompleted(
+            OfferCompletedEvent evt)
+        {
+            Rebuild();
+        }
+        
+        private void Rebuild()
+        {
+            Clear();
+
+            Build();
+        }
+
+        private void Clear()
+        {
+            foreach (Transform child
+                     in _container.Container)
+            {
+                Destroy(child.gameObject);
+            }
         }
     }
 }

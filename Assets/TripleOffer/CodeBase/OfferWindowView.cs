@@ -4,6 +4,12 @@ namespace TripleOffer.CodeBase
 {
     public abstract class OfferWindowView : MonoBehaviour
     {
-        public abstract void Setup(IOffer offer);
+        public string EventId { get; protected set; }
+
+        public virtual void Setup(IOffer offer)
+        {
+            EventId = offer.EventId;
+        }
+
     }
 }

@@ -116,7 +116,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 3120025318951794569}
   m_OnClick:
     m_PersistentCalls:
@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 7773951013409522120}
   - component: {fileID: 9213798834344792476}
   - component: {fileID: 2497965814166669172}
+  - component: {fileID: 342960952868467057}
   m_Layer: 5
   m_Name: small_offer_item
   m_TagString: Untagged
@@ -215,6 +216,19 @@ MonoBehaviour:
   _title: {fileID: 3072496510058050798}
   _price: {fileID: 1464358889019491053}
   _buyButton: {fileID: 3368334111332046631}
+  _canvasGroup: {fileID: 342960952868467057}
+--- !u!225 &342960952868467057
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090476644352146771}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3336680277226200251
 GameObject:
   m_ObjectHideFlags: 0
