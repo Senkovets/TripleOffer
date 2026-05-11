@@ -71,17 +71,17 @@
           "Id": "offer_01",
           "ItemViewId": "small_offer_item",
 
-          "Title": "Small Pack",
-          "Price": 4.99,
+          "Title": "Pro Small Pack",
+          "Price": 7.99,
 
           "Rewards": [
             {
               "$type": "GemsRewardData, Assembly-CSharp",
-              "Amount": 100
+              "Amount": 500
             },
             {
               "$type": "PremiumRewardData, Assembly-CSharp",
-              "Days": 2
+              "Days": 5
             }
           ]
         },
@@ -90,17 +90,17 @@
           "Id": "offer_02",
           "ItemViewId": "medium_offer_item",
 
-          "Title": "Medium Pack",
-          "Price": 9.99,
+          "Title": "Pro Medium Pack",
+          "Price": 12.99,
 
           "Rewards": [
             {
               "$type": "CoinsRewardData, Assembly-CSharp",
-              "Amount": 5000
+              "Amount": 15000
             },
             {
               "$type": "SkinRewardData, Assembly-CSharp",
-              "SkinId": "RareHelm"
+              "SkinId": "EpicHelm"
             }
           ]
         }
