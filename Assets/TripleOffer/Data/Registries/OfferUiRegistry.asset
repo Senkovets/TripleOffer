@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Entries:
   - EventId: triple_offer_01
-    ButtonPrefab: {fileID: 5757846880769994519, guid: 4f2d4e78c6badfc43ba7fab3845e8a55, type: 3}
-    WindowPrefab: {fileID: 4107114316437579964, guid: 758f3ac1fcad8204591aabcc67efcc43, type: 3}
+    ButtonPrefab: {fileID: 5757846880769994519, guid: df25818c8785c5c41b743b514bde2f08, type: 3}
+    WindowPrefab: {fileID: 4107114316437579964, guid: 720899a622950b54382048c2f79e8c29, type: 3}
     ItemPrefabs:
     - ItemViewId: small_offer_item
-      Prefab: {fileID: 2497965814166669172, guid: 586dac7f8bf991847b22cddb61e218e5, type: 3}
+      Prefab: {fileID: 2497965814166669172, guid: 78c9f563f09750445983e16df3328fec, type: 3}
     - ItemViewId: medium_offer_item
-      Prefab: {fileID: 2497965814166669172, guid: a1034d3f089b09a46995981a0ec2989a, type: 3}
+      Prefab: {fileID: 2497965814166669172, guid: aa4cae19f4f20754496fb18a948a6390, type: 3}
   - EventId: triple_offer_02
-    ButtonPrefab: {fileID: 5757846880769994519, guid: ae7f56f3f85f8094bb89e2a101755f3e, type: 3}
-    WindowPrefab: {fileID: 4107114316437579964, guid: 758f3ac1fcad8204591aabcc67efcc43, type: 3}
+    ButtonPrefab: {fileID: 5757846880769994519, guid: c72a217be9002f744aa7ca444e97932d, type: 3}
+    WindowPrefab: {fileID: 4107114316437579964, guid: e066eba0f0bbb1d45bfbd03d47b44077, type: 3}
     ItemPrefabs:
     - ItemViewId: small_offer_item
-      Prefab: {fileID: 2497965814166669172, guid: 586dac7f8bf991847b22cddb61e218e5, type: 3}
+      Prefab: {fileID: 2497965814166669172, guid: 5711a8d25a2bd1943a4e55b6ac8a3ecc, type: 3}
     - ItemViewId: medium_offer_item
-      Prefab: {fileID: 2497965814166669172, guid: a1034d3f089b09a46995981a0ec2989a, type: 3}
+      Prefab: {fileID: 2497965814166669172, guid: 5903f2003fa2ba84386b87929017d78f, type: 3}
