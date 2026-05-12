@@ -4,7 +4,7 @@
       "EventId": "triple_offer_01",
       "Type": "TripleOffer",
       "Title": "Starter Bundle",
-      "DurationHours": 48,
+      "DurationHours": 0.01,
 
       "CompletionRewards": [
         {
