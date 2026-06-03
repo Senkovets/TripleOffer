@@ -11,8 +11,6 @@ namespace TripleOffer.CodeBase
         
         private readonly Dictionary<string, OfferWindowView> _openedWindows = new();
 
-        // DiContainer уже зарегистрирован в самом Zenject, 
-        // поэтому он просто придет сюда через конструктор.
         public WindowService(OfferUiRegistry registry, DiContainer container) 
         {
             _registry = registry;
@@ -22,9 +20,7 @@ namespace TripleOffer.CodeBase
         public void Open(IOffer offer)
         {
             if (_openedWindows.ContainsKey(offer.EventId))
-            {
                 return;
-            }
 
             OfferUiEntry entry = _registry.Get(offer.EventId);
 
@@ -34,12 +30,9 @@ namespace TripleOffer.CodeBase
                 return;
             }
 
-            // ИСПРАВЛЕНИЕ: Используем контейнер для спавна префаба.
-            // Это автоматически прокинет [Inject] IWindowService и OfferUiRegistry в само окно.
             OfferWindowView window = _container.InstantiatePrefabForComponent<OfferWindowView>(
                 entry.WindowPrefab);
 
-            // Теперь Setup вызовется у объекта, в котором зависимости уже внедрены.
             window.Setup(offer);
 
             _openedWindows.Add(offer.EventId, window);
@@ -47,8 +40,8 @@ namespace TripleOffer.CodeBase
 
         public void Close(OfferWindowView window)
         {
-            // Небольшая проверка на null, чтобы не упасть при закрытии
-            if (window == null) return;
+            if (window == null) 
+                return;
 
             if (_openedWindows.ContainsKey(window.EventId))
             {
