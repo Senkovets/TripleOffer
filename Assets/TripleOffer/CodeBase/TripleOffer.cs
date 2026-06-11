@@ -1,3 +1,4 @@
+using System;
 using Zenject;
 
 namespace TripleOffer.CodeBase
@@ -107,23 +108,31 @@ namespace TripleOffer.CodeBase
         
         private void LoadOrCreateState()
         {
-            string key =
-                OfferSaveKeys.GetOfferKey(EventId);
+            string key = OfferSaveKeys.GetOfferKey(EventId);
 
             if (_saveLoadService.Exists(key))
             {
                 _state = _saveLoadService.Load<TripleOfferState>(key);
-
                 return;
+            }
+
+            var startTime = _clock.UtcNow;
+            DateTime expiration;
+
+            if (!string.IsNullOrEmpty(_config.EndDateUtc))
+            {
+                expiration = DateTime.Parse(_config.EndDateUtc, 
+                    null, System.Globalization.DateTimeStyles.RoundtripKind);
+            }
+            else
+            {
+                expiration = startTime.AddHours(_config.DurationHours);
             }
 
             _state = new TripleOfferState
             {
-                StartTime = _clock.UtcNow,
-                ExpirationTime =
-                    _clock.UtcNow.AddHours(
-                        _config.DurationHours
-                    )
+                StartTime = startTime,
+                ExpirationTime = expiration
             };
 
             Save();
