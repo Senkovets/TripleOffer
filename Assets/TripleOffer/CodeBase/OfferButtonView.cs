@@ -31,6 +31,12 @@ namespace TripleOffer.CodeBase
         {
             while (_offer != null)
             {
+                if (!_offer.IsAvailable)
+                {
+                    gameObject.SetActive(false); // прячем кнопку
+                    yield break;
+                }
+        
                 _timerText.text = _offer.RemainingTimeStr;
                 yield return new WaitForSeconds(1f);
             }

@@ -48,6 +48,12 @@ namespace TripleOffer.CodeBase
         {
             while (_offer != null)
             {
+                if (!_offer.IsAvailable)
+                {
+                    Close(); // закрываем окно
+                    yield break;
+                }
+        
                 if (_timerText != null)
                     _timerText.text = _offer.RemainingTimeStr;
             
