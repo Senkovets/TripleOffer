@@ -22,6 +22,9 @@ namespace TripleOffer.CodeBase
             if (_openedWindows.ContainsKey(offer.EventId))
                 return;
 
+            if (_openedWindows.Count > 0)
+                return;
+            
             OfferUiEntry entry = _registry.Get(offer.EventId);
 
             if (entry == null)
